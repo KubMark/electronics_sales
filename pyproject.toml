@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "electronics-sales"
+version = "0.1.0"
+description = ""
+authors = ["macbook <mypur86@yahoo.com>"]
+readme = "README.md"
+packages = [{include = "electronics_sales"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+djoser = "^2.2.0"
+psycopg2-binary = "^2.9.6"
+djangorestframework = "^3.14.0"
+django-environ = "^0.10.0"
+django-filter = "^23.2"
+djangorestframework-simplejwt = "^5.2.2"
+drf-spectacular = "^0.26.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
