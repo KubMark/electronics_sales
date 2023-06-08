@@ -4,7 +4,6 @@ from django.contrib.auth.models import Group
 from users.models import User
 
 
-@admin.register(User)
 class CustomUserAdmin(UserAdmin):
     list_display = ('username', 'email', 'first_name', 'last_name')
     list_filter = ('is_staff', 'is_active', 'is_superuser')
@@ -16,4 +15,5 @@ class CustomUserAdmin(UserAdmin):
         ('Important dates', {'fields': ('last_login', 'date_joined')}))
 
 
+admin.site.register(User, CustomUserAdmin)
 admin.site.unregister(Group)

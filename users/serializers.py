@@ -19,13 +19,19 @@ class PasswordFieldSerializer(serializers.CharField):
         self.validators.append(validate_password)
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'first_name', 'last_name', 'email')
+
+
 class CreateUserSerializer(serializers.ModelSerializer):
     password = PasswordFieldSerializer()
     password_repeat = PasswordFieldSerializer()
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'lasr_name', 'email', 'password', 'password_repeat')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'password_repeat')
 
         """Checking that passwords are correct"""
     def validate(self, attrs: dict) -> dict:
