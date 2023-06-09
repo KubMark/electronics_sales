@@ -136,9 +136,13 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
 SPECTACULAR_SETTINGS = {
     "TITLE": "Electronic Sales API",
-    "DESCRIPTION": "Electronic Sales API",
-    "VERSION": "1.0.0",
+    "DESCRIPTION": "Welcome to Electronic Sales API",
+    "VERSION": "1.0.0.0.0.0.0.0.0.0.0.0.0.0",
 }
 AUTH_USER_MODEL = 'users.User'

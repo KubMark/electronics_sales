@@ -1,8 +1,10 @@
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
 from rest_framework.response import Response
-
 from users.models import User
 from users.serializers import CreateUserSerializer, LoginUserSerializer, ProfileSerializer
+from django.urls import reverse
 
 
 class CreateAccountView(CreateAPIView):
@@ -26,3 +28,12 @@ class ProfileView(RetrieveUpdateDestroyAPIView):
 
     def get_object(self):
         return self.request.user
+
+
+class UserLogoutView(GenericAPIView):
+    serializer_class = ProfileSerializer
+    queryset = User.objects.all
+
+    def get(self, request):
+        logout(request)
+        return redirect(reverse('login'))
